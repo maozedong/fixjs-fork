@@ -42,6 +42,7 @@ var Session = function(is_acceptor, opt) {
 
         // heatbeat handler
         var heartbeat_timer = setInterval(function () {
+            console.log('session::heartbeat');
             var currentTime = new Date().getTime();
 
             // counter party might be dead, kill connection

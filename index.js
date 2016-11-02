@@ -5,6 +5,8 @@ var assert = require('assert');
 const net = require('net');
 var fix = require('./fix');
 const Msgs = fix.Msgs;
+const conf = require('./config.json');
+
 // var through = require('through2');
 // var duplexer = require('duplexer2');
 // var stream_server = through();
@@ -21,10 +23,7 @@ const Msgs = fix.Msgs;
 // });
 // var session = client.session('KOYFINFX', 'CIB');
 
-
-const host = '198.203.232.100';
-const port = 5001;
-let clientSocket = net.createConnection({host: host, port: port});
+let clientSocket = net.createConnection({host: conf.host, port: conf.port});
 let client = fix.createClient(clientSocket);
 var session = client.session('KOYFINFX', 'CIB');
 session.on('logon', ()=>{
