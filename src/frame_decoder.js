@@ -15,6 +15,8 @@ module.exports = function() {
         var self = this;
         buffer += chunk;
 
+        console.log('frame_decoder', buffer);
+
         while (buffer.length > 0) {
             // Step 1: Extract complete FIX message
             // If we don't have enough data to start extracting body length, wait for more data

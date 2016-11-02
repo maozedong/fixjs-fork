@@ -11,7 +11,7 @@ var Msg = require('./msg');
 module.exports.types = {}
 
 // load resource file
-var data = fs.readFileSync(__dirname + '/../resources/FIX42.xml');
+var data = fs.readFileSync(__dirname + '/../resources/FIX44.xml');
 
 var parser = new xml2js.Parser();
 parser.parseString(data, function (err, result) {

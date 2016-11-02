@@ -14,6 +14,7 @@ var Client = function(stream, opt) {
 
     // new fix message
     decoder.on('data', function(msg) {
+        console.log('client', msg);
         // filter to appropriate session
 
         // TODO this should be a combination of target comp id
@@ -57,6 +58,8 @@ Client.prototype.session = function(sender_comp_id, target_comp_id) {
 
     session.on('send', function(msg) {
         var out = msg.serialize();
+        console.log('client::on:send', msg);
+        console.log('client::on:send', out);
         stream.write(out);
     });
 

@@ -158,11 +158,13 @@ var Session = function(is_acceptor, opt) {
 
     // our admin handling
     self.on('message', function(msg, next) {
+        console.log('session::on:message1', msg);
         self._process_incoming(msg, next);
     });
 
     // handle dispatching messages by name or rejecting if unsupported
     self.on('message', function(msg, next) {
+        console.log('session::on:message2', msg);
         var listeners = self.listeners(msg.name).concat();
         if (listeners.length === 0) {
             // admin messages don't need to be handled by the app
