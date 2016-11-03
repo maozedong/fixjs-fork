@@ -395,7 +395,7 @@ Session.prototype.send = function(msg, keep_set_fields) {
 Session.prototype.logon = function(additional_fields) {
     var self = this;
     var msg = new Msgs.Logon();
-    msg.HeartBtInt = 10;
+    msg.HeartBtInt = 30;
     msg.EncryptMethod = 0;
 
     if (additional_fields) {

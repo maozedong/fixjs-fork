@@ -1,6 +1,7 @@
 /// fix message
 
 var moment = require('moment');
+var config = require('./config');
 
 // convert a date object into a fix formatted timestamp
 var getUTCTimeStamp = function(date){
@@ -79,7 +80,7 @@ Msg.prototype.serialize = function() {
     var bodymsg = body_arr.join(Msg.kFieldSeparator);
 
     var out = [];
-    out.push('8=' + 'FIX.4.4'); // TODO variable
+    out.push('8=' + config.version);
 
     // if there is no body, then only one separator will be added
     // if there is a body, then there will be another separator
@@ -97,6 +98,8 @@ Msg.prototype.serialize = function() {
 
     var outmsg = out.join(Msg.kFieldSeparator);
     outmsg += Msg.kFieldSeparator;
+    var test = outmsg + '10=' + Msg.checksum(outmsg) + Msg.kFieldSeparator;
+    console.log('msg::serialize', test);
     return outmsg + '10=' + Msg.checksum(outmsg) + Msg.kFieldSeparator;
 };
 

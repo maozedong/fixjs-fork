@@ -14,7 +14,7 @@ var Client = function(stream, opt) {
 
     // new fix message
     decoder.on('data', function(msg) {
-        console.log('client', msg);
+        console.log('client::data', msg);
         // filter to appropriate session
 
         // TODO this should be a combination of target comp id
